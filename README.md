@@ -79,6 +79,10 @@ This system may over-prioritize exact genre matches, which can ignore great cros
 
 ---
 
+## CLI Verification
+
+![Recommendations](Recommendations.png)
+
 ## Getting Started
 
 ### Setup
