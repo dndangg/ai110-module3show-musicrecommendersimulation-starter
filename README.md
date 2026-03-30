@@ -83,6 +83,14 @@ This system may over-prioritize exact genre matches, which can ignore great cros
 
 ![Recommendations](Recommendations.png)
 
+## Stress Test
+
+![R1](R1.png)
+![R2](R2.png)
+![R3](R3.png)
+![R4](R4.png)
+![R5](R5.png)
+
 ## Getting Started
 
 ### Setup
