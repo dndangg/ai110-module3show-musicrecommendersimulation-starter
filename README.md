@@ -29,6 +29,54 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+Real-world recommendation systems usually combine many signals and algorithms, then rank items by their predicted satisfaction rather than just popularity. In practice, platforms learn from user behavior over time (plays, skips, likes, watch/listen history), compare users with similar patterns, and also use item attributes to improve vibe matching. My version will prioritize transparency and explainability. It will focus on clear content matching so that each recommendation can be traced to specific song traits and user preferences.
+
+Song features used in the simulation:
+
+id
+title
+artist
+genre
+mood
+energy
+tempo_bpm
+valence
+danceability
+acousticness
+
+UserProfile features used in the simulation:
+
+favorite_genre
+favorite_mood
+target_energy
+likes_acoustic
+
+---
+
+This project will use a simple, explainable content-based recommender. For each song, the system compares song attributes to one user taste profile, computes a score, then ranks all songs and returns the top K. The goal is to keep recommendation behavior transparent and easy to justify in your reflection and model card.
+
+Finalized Algorithm Recipe
+Features used for scoring:
+genre
+mood
+energy
+acousticness
+Per-song component scores:
+genre_match = 1 if song genre equals user favorite_genre, else 0
+mood_match = 1 if song mood equals user favorite_mood, else 0
+energy_similarity = 1 - abs(song.energy - user.target_energy)
+acoustic_fit = song.acousticness if likes_acoustic is true, else 1 - song.acousticness
+Weighted total score:
+score = 0.35genre_match + 0.25mood_match + 0.25energy_similarity + 0.15acoustic_fit
+Ranking rule:
+Compute score for every song
+Sort descending by score
+Return top K
+Tie-break by smaller energy distance, then lower song id
+Potential Bias Note
+This system may over-prioritize exact genre matches, which can ignore great cross-genre songs that still fit the user’s mood and vibe. It may also inherit bias from limited mood labels and a small catalog, reducing diversity and discovery.
+
+
 ---
 
 ## Getting Started
